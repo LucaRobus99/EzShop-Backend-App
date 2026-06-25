@@ -1,39 +1,73 @@
-# FastAPI MVC Project
+# EzShop Backend App 🛒
 
+EzShop is a backend application designed to manage retail store operations, built as a project for the Software Engineering 1 (SE1) course at Politecnico di Torino. 
 
-## Setup
+It provides a comprehensive RESTful API for handling users, products, sales, returns, customer loyalty cards, and orders, following an MVC (Model-View-Controller) architectural pattern.
 
+## 🌟 Features
+- **User Management & Auth**: Roles, authentication with JWT, user balances.
+- **Product & Inventory**: Catalog management, tracking quantities and physical positions.
+- **Sales & Transactions**: Checkout process, line items, and payment processing.
+- **Returns**: Managing product returns tied to specific sales.
+- **Orders**: Purchasing new stock and updating inventory.
+- **Customers & Loyalty Cards**: Customer tracking, loyalty points, and discounts.
 
-1. Create a virtualenv and install dependencies:
+## 🛠 Tech Stack
+- **Framework**: [FastAPI](https://fastapi.tiangolo.com/)
+- **Database**: SQLite (via `aiosqlite`) with [SQLAlchemy](https://www.sqlalchemy.org/) ORM
+- **Authentication**: JWT (`PyJWT`)
+- **Testing**: `pytest`, `pytest-asyncio`, `pytest-cov`
 
-```bash
-python -m venv .venv
-source .venv/bin/activate # on Windows: .venv\\Scripts\\activate
-pip install -r requirements.txt
-```
+## 🚀 Setup & Installation
 
-2. Initialize the database:
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/LucaRobus99/EzShop-Backend-App.git
+   cd EzShop-Backend-App
+   ```
 
-```bash
-python init_db.py
-```
+2. **Create a virtual environment and activate it**:
+   ```bash
+   python -m venv .venv
+   
+   # On Windows:
+   .venv\Scripts\activate
+   
+   # On Linux/macOS:
+   source .venv/bin/activate
+   ```
 
-3. Run the application:
+3. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Initialize the Database**:
+   ```bash
+   python init_db.py
+   ```
+
+## 💻 Running the Application
+
+To start the development server, run:
 ```bash
 uvicorn main:app --reload
 ```
-## API Documentation
-You can find the swagger in the corresponding file.
+The server will be available at `http://127.0.0.1:8000`.
 
-## Running Tests
-To run the tests, use the command:
+### 📚 API Documentation
+FastAPI automatically generates interactive API documentation. Once the server is running, you can access:
+- **Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- **ReDoc**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
+## 🧪 Running Tests
+
+To run the full test suite (Unit, Integration, and System tests):
 ```bash
-    pytest .\tests\<your test path>
+pytest
 ```
 
-To run the tests with coverage report, use the command:
-
+To run tests with a coverage report:
 ```bash
-    pytest --cov=app .\tests\<your test path>
+pytest --cov=app tests/
 ```
